@@ -1,0 +1,49 @@
+@import url('./tpography.css');
+
+:root {
+  /* BASE COLORS */
+  --white: #f0f0f0;
+  --black: #000;
+  --yellow-1: #fbd65c;
+  --yellow-2: #ffe591;
+  --light-yellow-1: #fff2c7;
+  --red-1: #c03540;
+  --red-2: #c76870;
+
+  --dark-1: #000000;
+  --gray-1: #1a1a1a;
+  --gray-2: #a3a3a4;
+  --gray-3:#d1d1d1;
+}
+
+/* semantic color variables for this project */
+:root {
+    --background: var(--dark-1);
+    --text: var(--gray-3);
+    --primary: var(--red-1);
+    --primary-light: var(--red-2);
+    --secondary: var(--yellow-1);
+    --secondary-light: var(--yellow-2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: var(--text);
+}
+
+body {
+    min-height: 100vw;
+    min-height: 100vh;
+    color: var(--text);
+    background: var(--background);
+  
+    /* line-height: 1.6; */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
