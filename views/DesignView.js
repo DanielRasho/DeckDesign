@@ -244,7 +244,7 @@ class DesignView extends HTMLElement {
 
         const importantButton = document.getElementById('source-code-btn')
         importantButton.addEventListener('click', () => {
-            window.open(url, '_blank');
+            window.open("https://github.com/DanielRasho/DeckDesign", '_blank');
         })
     }
 }
