@@ -9,6 +9,7 @@ import "./stores/CardStore.js"
 
 // COMPONENTS
 import "./components/TextInput.js"
+import "./components/ImageInput.js"
 import "./components/MainButton.js"
 import "./components/SecondaryButton.js"
 import "./components/DragabbleText.js"

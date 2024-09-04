@@ -1,5 +1,6 @@
 import { MAIN_CARD } from "../stores/CardStore.js";
 import { TextBoxModel } from "../models/TextBoxModel.js";
+import { ImageBoxModel } from "../models/ImageBoxModel.js";
 import { DragabbleElement } from "../models/DragabbleElement.js";
 import { DEFAULT_FONT_STYLES } from "../models/TextBoxModel.js";
 
@@ -12,10 +13,13 @@ class DesignView extends HTMLElement {
     connectedCallback() {
         this.render()
         this.recreateTextInputs()
+        this.recreateImageInputs()
         this.addTextFieldListener()
+        this.addImageFieldListener()
         this.addEventListeners()
         window.addEventListener('modelChange', (event) => {
             this.recreateTextInputs()
+            this.recreateImageInputs()
         });
     }
 
@@ -38,6 +42,25 @@ class DesignView extends HTMLElement {
 
     }
 
+    recreateImageInputs(){
+        let textBoxes = MAIN_CARD.images
+        const sectionTexts = document.getElementById('section-images-list')
+        sectionTexts.innerHTML = '' // Clear data
+        
+        textBoxes.forEach((imageBoxModel, index) => {
+            const imageInput = document.createElement('image-input')
+            
+            imageInput.setModel(imageBoxModel)
+            imageInput.setAttribute('image-box-id', index)
+
+            // HERE PASS THE RENDER FUNCTION
+            // textInput.parentRender = () => this.recreateTextInputs();
+
+            sectionTexts.append(imageInput)
+        })
+
+    }
+
     addTextFieldListener(){
         const addTextFieldButton = document.getElementById('add-text-field-btn')
         addTextFieldButton.addEventListener('click', () => {
@@ -52,6 +75,23 @@ class DesignView extends HTMLElement {
                 DEFAULT_FONT_STYLES
             ))
             this.recreateTextInputs()
+        })
+    }
+
+    addImageFieldListener(){
+        const addImageFieldButton = document.getElementById('add-image-field-btn')
+        addImageFieldButton.addEventListener('click', () => {
+            MAIN_CARD.addImage(new ImageBoxModel(
+                new DragabbleElement(
+                    'card-previewer',
+                    10, 10,
+                    60, 30,
+                    2,
+                ),
+                "",
+                ""
+            ))
+            this.recreateImageInputs()
         })
     }
     
@@ -130,7 +170,12 @@ class DesignView extends HTMLElement {
                             <span class="retro-font">03</span>
                         </label>
                         <div class="section-content">
-                            content
+                            <div id="section-images-list">
+                            </div>
+                            <secondary-button 
+                                text="New field" 
+                                after-icon="fa-solid fa-plus" 
+                                button-id="add-image-field-btn">
                         </div>
                     </li>
                 </ul>

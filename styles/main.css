@@ -4,6 +4,7 @@
 @import "./textInput.css";
 @import "./cardEditor.css";
 @import "./dragabbleText.css";
+@import "./imageInput.css";
 
 :root {
   /* BASE COLORS */

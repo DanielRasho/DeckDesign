@@ -1,8 +1,9 @@
 
 export class ImageBoxModel {
-    constructor(dragabbleElement, image) {
+    constructor(dragabbleElement, image, filename) {
         this.dragabbleElement = dragabbleElement
         this.image = image
+        this.filename = filename
     }
 
     // Accessor methods for DragabbleElement

@@ -30,6 +30,15 @@ export class CardModel {
         this.textBoxes.splice(index, 1)
     }
 
+    addImage(textBox) {
+        this.images.push(textBox)
+        textBox.setZIndex(this.images.length)
+    }
+
+    removeImage(index) {
+        this.images.splice(index, 1)
+    }
+
     notifyChange() {
         const event = new CustomEvent('modelChange', { detail: this });
         window.dispatchEvent(event);
