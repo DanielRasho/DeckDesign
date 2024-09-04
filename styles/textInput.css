@@ -1,5 +1,5 @@
 .text-input {
-    width: 85%;
+    width: 80%;
     
     border-color: var(--gray-1);
     background-color: var(--dark-1);
@@ -39,32 +39,41 @@
     transition: background-color 0.2s ease-in-out;
 }
 
-.text-input-config-btn + label:hover,
-.text-input-config-btn[type="checkbox"]:checked + label {
+.text-delete-btn {
+    border: none;
+    background-color: #00000000;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 0.1rem;
+}
+
+.text-delete-btn:hover
+{
     background-color: var(--secondary);
 }
-.text-input-config-btn + label:hover i, 
-.text-input-config-btn[type="checkbox"]:checked + label i {
+.text-delete-btn:hover i
+{
     color: var(--dark-1);
 }
 
-input[type="color"]{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 30px;
-    height: 30px;
-    border: none;
-    outline: none ;
-    cursor: pointer;
+.text-input-config-btn + label:hover,
+.text-input-config-btn[type="checkbox"]:checked + label 
+{
+    background-color: var(--secondary);
+}
+.text-input-config-btn + label:hover i, 
+.text-input-config-btn[type="checkbox"]:checked + label i 
+{
+    color: var(--dark-1);
 }
 
-.text-input-config-btn[type="checkbox"] + label + .text-input-controllers{ 
+.text-input-config-btn[type="checkbox"] + label + button + .text-input-controllers{ 
     padding: 0 0.5rem;
     max-height: 0;
 }
 
-.text-input-config-btn[type="checkbox"]:checked + label + .text-input-controllers{ 
+.text-input-config-btn[type="checkbox"]:checked + label + button + .text-input-controllers{ 
     padding: 2rem 0.5rem;
     max-height: fit-content;
 }
@@ -73,14 +82,61 @@ input[type="color"]{
     overflow: hidden;
 }
 
+/* STYLE INPUT BAR */
+
 .text-input-styles {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .text-input-styles i {
     font-size: 1.2rem;
     margin: 0 0.5ch;
     cursor: pointer;
+    
+}
+
+.text-input-styles input[type="radio"],
+.text-input-styles input[type="checkbox"]
+{
+    display: none;
+}
+
+.text-input-styles input[type="radio"],
+.text-input-styles input[type="checkbox"]
+{
+    display: none;
+}
+
+
+.text-input-styles input[type="radio"] + label,
+.text-input-styles input[type="checkbox"] + label
+{
+    padding: 0.5rem;
+    border-radius: 0.1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+.text-input-styles input[type="radio"]:checked + label,
+.text-input-styles input[type="checkbox"]:checked + label
+{
+    background-color: var(--secondary);
+}
+
+.text-input-styles input[type="radio"]:checked + label > i,
+.text-input-styles input[type="checkbox"]:checked + label > i
+{
+    color: var(--dark-1);
+}
+
+.text-input-controllers input[type="color"]{
+    width: 60px;
+    height: 40px;
+    display: block;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
