@@ -44,6 +44,21 @@ class CardEditor extends HTMLElement {
             this.appendChild(textBox);
         });
 
+        // Render draggable images
+        this._models.images.forEach((model, index) => {
+            const imageBox = document.createElement('dragabble-image');
+            imageBox.classList.add("dragabble-image");
+            imageBox.setAttribute('dragabble-image-id', index);
+            imageBox.setAttribute('x', model.getPosition().x);
+            imageBox.setAttribute('y', model.getPosition().y);
+            imageBox.setAttribute('width', model.getSize().width + "px");
+            imageBox.setAttribute('height', model.getSize().height + "px");
+            imageBox.setAttribute('zindex', model.getZIndex());
+            imageBox.setAttribute('image', model.image); // Assuming the model holds the image data
+
+            this.appendChild(imageBox);
+        });
+
         this.setBackground()
     }
 

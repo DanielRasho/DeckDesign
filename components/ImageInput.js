@@ -79,7 +79,6 @@ export class ImageInput extends HTMLElement {
                     this.model.image = reader.result;
                     this.model.filename = file.name
                     MAIN_CARD.notifyChange();
-                    console.log(this.model)
                 };
                 reader.readAsDataURL(file);
             }

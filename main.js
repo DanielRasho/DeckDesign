@@ -13,6 +13,7 @@ import "./components/ImageInput.js"
 import "./components/MainButton.js"
 import "./components/SecondaryButton.js"
 import "./components/DragabbleText.js"
+import "./components/DragabbleImage.js"
 import "./components/CardEditor.js"
 
 // VIEWS
