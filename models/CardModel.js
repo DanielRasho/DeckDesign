@@ -14,7 +14,7 @@ export class CardModel {
     constructor(
         textBoxes = [], 
         images = [], 
-        cardBackground = new CardBackground(CARD_BACKGROUND_TYPES.SOLID, '#FFFFFF')
+        cardBackground = new CardBackground(CARD_BACKGROUND_TYPES.IMAGE, './assets/template.jpg')
     ) {
         this.textBoxes = textBoxes
         this.images = images

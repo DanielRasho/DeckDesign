@@ -11,7 +11,7 @@ export class FontStyles {
 export const DEFAULT_FONT_STYLES = new FontStyles(
     'Arial',
     'normal',
-    '#000000',
+    '#FFFFFF',
     'normal',
     '16'
 )

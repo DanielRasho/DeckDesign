@@ -7,10 +7,10 @@ export const MAIN_CARD = new CardModel()
 MAIN_CARD.addTextBox(new TextBoxModel(
     new DragabbleElement(
         'card-previewer',
-        10, 10,
-        60, 30,
+        30, 30,
+        90, 30,
         2,
     ),
-    "HELLO",
+    "YOUR TEXT HERE",
     {...DEFAULT_FONT_STYLES}
 ))
