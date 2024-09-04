@@ -12,16 +12,21 @@ export class CardBackground {
 
 export class CardModel {
     constructor(
-        textBoxes = new Map(), 
-        images = new Map(), 
-        CardBackground = new CardBackground(CARD_BACKGROUND_TYPES.SOLID, '#FFFFFF')
+        textBoxes = [], 
+        images = [], 
+        cardBackground = new CardBackground(CARD_BACKGROUND_TYPES.SOLID, '#FFFFFF')
     ) {
         this.textBoxes = textBoxes
         this.images = images
-        this.CardBackground = CardBackground
+        this.cardBackground = cardBackground
     }
     
-    addTextBox(textBox){
+    addTextBox(textBox) {
         this.textBoxes.push(textBox)
+        textBox.setZIndex(this.textBoxes.length)
+    }
+
+    removeTextBox(index) {
+        this.textBoxes.splice(index, 1)
     }
 }

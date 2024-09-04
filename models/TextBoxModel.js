@@ -7,13 +7,35 @@ export class FontStyles {
     }
 }
 
+export const DEFAULT_FONT_STYLES = new FontStyles(
+    'Arial',
+    'normal',
+    '#000000',
+    'normal'
+)
+
 export class TextBoxModel {
-    constructor( dragabbleElement, fontStyles, vAlign, hAlign) {
+    constructor( 
+        dragabbleElement, 
+        text, 
+        fontStyles = DEFAULT_FONT_STYLES, 
+        vAlign = "top", 
+        hAlign = "center") {
+        this.text = text
         this.dragabbleElement = dragabbleElement
         this.fontStyles = fontStyles
         this.vAlign = vAlign
         this.hAlign = hAlign
     }
+    
+    getText(){
+        return this.text;
+    }
+
+    setText(text){
+        this.text = text;
+    }
+
     // Accessor methods for DragabbleElement
     getPosition() {
         return {
