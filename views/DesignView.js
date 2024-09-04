@@ -2,8 +2,6 @@ class DesignView extends HTMLElement {
     
     constructor() {
         super()
-        this.textInput = null;
-        this.shadow = this.attachShadow({mode: 'open'})
     }
 
     connectedCallback() {
@@ -11,7 +9,7 @@ class DesignView extends HTMLElement {
     }
     
     render() {
-        this.shadow.innerHTML = /*html*/`
+        this.innerHTML = /*html*/`
         <link rel="stylesheet" href="./styles/main.css">
         <link rel="stylesheet" href="./styles/designView.css">
         <div class='design-view'>
@@ -21,7 +19,8 @@ class DesignView extends HTMLElement {
                         <input 
                             type="radio" 
                             name="accordion" 
-                            id="design-controls_general">
+                            id="design-controls_general" 
+                            checked>
                         <label for="design-controls_general">
                             <span class="section-header">General</span>
                             <span class="retro-font">01</span>
@@ -49,8 +48,8 @@ class DesignView extends HTMLElement {
                             name="accordion" 
                             id="design-controls_images">
                         <label for="design-controls_images">
-                            <span class="section-header">Text</span>
-                            <span class="retro-font">02</span>
+                            <span class="section-header">Images</span>
+                            <span class="retro-font">03</span>
                         </label>
                         <div class="section-content">
                             content
@@ -59,7 +58,13 @@ class DesignView extends HTMLElement {
                 </ul>
             </div>
             <div class='design-view_preview'>
-                <div> CARD </div>
+                <div class='card-previewer'>
+                </div>
+                <div> 
+                    <main-button 
+                        text="Export" after-icon="fa-solid fa-arrow-right" 
+                        button-id="export-btn">
+                </div>
             </div>
         </div>
         `;

@@ -81,14 +81,56 @@
     height: 100%;
     width: 60%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .design-view_preview::before{
     content: '';
     position: absolute;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     height: 80%;
-    width: 1px;
+    width: 2px;
     background-color: var(--dark-2);
+}
+
+.card-previewer {
+    background-color: white;
+    aspect-ratio: 3.5 / 2;
+    width: 75%;
+    border-radius: 0.3rem;
+}
+
+#export-btn{
+    position: absolute; 
+    right: 3rem;
+    top: 3rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .design-view{
+        flex-direction: column;
+    }
+
+    .design-view_preview::before{
+        font-display: none;
+    }
+
+    .design-view_controllers{
+        width: 100%;
+        overflow: visible;
+    }
+    .design-view_preview{
+        margin-top: 4rem;
+        width: 100%;
+        flex-direction: column;
+    }
+    #export-btn{
+        position: static;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
 }
