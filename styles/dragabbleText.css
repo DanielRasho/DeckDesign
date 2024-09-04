@@ -15,9 +15,11 @@
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-.resizer {
+
+.dragabble-text .resizer {
     display: none;
 }
 .dragabble-text:hover .resizer{
     display: block;
+    background-color: rgb(93, 209, 255);
 }

@@ -147,7 +147,6 @@ class DraggableText extends HTMLElement {
         resizer.style.position = 'absolute';
         resizer.style.width = '10px';
         resizer.style.height = '10px';
-        resizer.style.backgroundColor = '#000';
         resizer.style.right = '0';
         resizer.style.bottom = '0';
         resizer.style.cursor = 'nwse-resize';
