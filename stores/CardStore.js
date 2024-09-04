@@ -11,6 +11,6 @@ MAIN_CARD.addTextBox(new TextBoxModel(
         60, 30,
         2,
     ),
-    "",
+    "HELLO",
     DEFAULT_FONT_STYLES
 ))

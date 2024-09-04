@@ -2,6 +2,8 @@
 @import "./mainButton.css";
 @import "./secondaryButton.css";
 @import "./textInput.css";
+@import "./cardEditor.css";
+@import "./dragabbleText.css";
 
 :root {
   /* BASE COLORS */

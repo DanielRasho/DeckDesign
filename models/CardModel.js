@@ -33,5 +33,6 @@ export class CardModel {
     notifyChange() {
         const event = new CustomEvent('modelChange', { detail: this });
         window.dispatchEvent(event);
+        console.log("SOMEONE MODIFIED ME");
     }
 }

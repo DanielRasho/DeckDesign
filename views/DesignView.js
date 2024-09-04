@@ -135,8 +135,8 @@ class DesignView extends HTMLElement {
                 </ul>
             </div>
             <div class='design-view_preview'>
-                <div id='card-previewer' class='card-previewer'>
-                </div>
+                <card-editor class="card-editor">
+                </card-editor>
                 <div> 
                     <main-button 
                         text="Export" after-icon="fa-solid fa-arrow-right" 

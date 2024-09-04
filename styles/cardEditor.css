@@ -1,0 +1,8 @@
+.card-editor {
+    position: relative;
+    background-color: white;
+    aspect-ratio: 3.5 / 2;
+    width: 75%;
+    border-radius: 0.3rem;
+    max-width: 900px;
+}

@@ -112,14 +112,6 @@
     background-color: var(--dark-2);
 }
 
-.card-previewer {
-    background-color: white;
-    aspect-ratio: 3.5 / 2;
-    width: 75%;
-    border-radius: 0.3rem;
-    max-width: 900px;
-}
-
 #export-btn{
     position: absolute; 
     right: 3rem;

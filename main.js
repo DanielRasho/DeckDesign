@@ -11,6 +11,8 @@ import "./stores/CardStore.js"
 import "./components/TextInput.js"
 import "./components/MainButton.js"
 import "./components/SecondaryButton.js"
+import "./components/DragabbleText.js"
+import "./components/CardEditor.js"
 
 // VIEWS
 import "./views/HomeView.js"

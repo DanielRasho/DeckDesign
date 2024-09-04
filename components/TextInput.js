@@ -4,6 +4,7 @@ export class TextInput extends HTMLElement {
     constructor() {
         super();
         this.model = null;
+        this.notifyChange = MAIN_CARD.notifyChange
     }
 
     static get observedAttributes() {
@@ -167,6 +168,7 @@ export class TextInput extends HTMLElement {
                 this.model.getFontStyles().color,
                 this.model.getFontStyles().style
             );
+            this.notifyChange()
         });
 
         // Italic checkbox
@@ -179,6 +181,7 @@ export class TextInput extends HTMLElement {
                 this.model.getFontStyles().color,
                 this.italic ? 'italic' : 'normal'
             );
+            this.notifyChange()
         });
 
         // Horizontal Alignment radio buttons
@@ -189,18 +192,21 @@ export class TextInput extends HTMLElement {
         hAlignLeftRadio.addEventListener('change', () => {
             if (hAlignLeftRadio.checked) {
                 this.model.setHorizontalAlign('left');
+                this.notifyChange()
             }
         });
 
         hAlignCenterRadio.addEventListener('change', () => {
             if (hAlignCenterRadio.checked) {
                 this.model.setHorizontalAlign('center');
+                this.notifyChange()
             }
         });
 
         hAlignRightRadio.addEventListener('change', () => {
             if (hAlignRightRadio.checked) {
                 this.model.setHorizontalAlign('right');
+                this.notifyChange()
             }
         });
 
@@ -212,18 +218,21 @@ export class TextInput extends HTMLElement {
         vAlignTopRadio.addEventListener('change', () => {
             if (vAlignTopRadio.checked) {
                 this.model.setVerticalAlign('top');
+                this.notifyChange()
             }
         });
 
         vAlignCenterRadio.addEventListener('change', () => {
             if (vAlignCenterRadio.checked) {
                 this.model.setVerticalAlign('middle');
+                this.notifyChange()
             }
         });
 
         vAlignBottomRadio.addEventListener('change', () => {
             if (vAlignBottomRadio.checked) {
                 this.model.setVerticalAlign('bottom');
+                this.notifyChange()
             }
         });
 
@@ -237,12 +246,14 @@ export class TextInput extends HTMLElement {
                 this.color,
                 this.model.getFontStyles().style
             );
+            this.notifyChange()
         });
 
         // Text input
         const textInput = this.querySelector('#text-input-' + id);
-        textInput.addEventListener('input', (event) => {
+        textInput.addEventListener('focusout', (event) => {
             this.model.setText(event.target.value);
+            this.notifyChange()
         });
     }
 }
