@@ -1,5 +1,5 @@
 
-export default class mainButton extends HTMLElement {
+export class mainButton extends HTMLElement {
     
     constructor(){
         super()
@@ -12,7 +12,8 @@ export default class mainButton extends HTMLElement {
 
     connectedCallback(){
         this.render()
-        let button = this.getElementById("button")
+        const buttonID = this.getAttribute('button-id') || '';
+        let button = document.getElementById(buttonID)
         button.addEventListener('click', this.callback())
     }
     
@@ -30,9 +31,7 @@ export default class mainButton extends HTMLElement {
         const buttonID = this.getAttribute('button-id') || '';
 
         this.innerHTML = /*html*/`
-        <link rel="stylesheet" href="./styles/main.css">
-        <link rel="stylesheet" href="./components/mainButton.css">
-        <button id="${buttonID}" class="button">
+        <button id="${buttonID}" class="primary-button">
             ${ !!beforeIcon ? `<i class="${beforeIcon}"></i>` : ''}
             ${text}
             ${ !!afterIcon ? `<i class="${afterIcon}"></i>` : ''}

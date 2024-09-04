@@ -1,4 +1,4 @@
-.button{
+.primary-button{
     border: none;   
     outline: none;
     background-color: var(--secondary);
@@ -17,19 +17,19 @@
 
     transition: background-color 0.2s ease-in-out;
 }
-.button > * {
+.primary-button > * {
     color: var(--dark-1);
 
 }
-.button > i {
+.primary-button > i {
     font-family: "Font Awesome 6 Free";
     transition: transform 0.2s ease-in-out;
 }
 
-.button:hover {
+.primary-button:hover {
     background-color: var(--orange);
 }
 
-.button:hover > i {
+.primary-button:hover > i {
     transform: translateX(0.5ch);
 }

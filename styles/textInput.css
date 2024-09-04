@@ -1,0 +1,86 @@
+.text-input {
+    width: 85%;
+    
+    border-color: var(--gray-1);
+    background-color: var(--dark-1);
+    color: var(--white);
+    
+    border-radius: 0.75rem;
+    border-width: 1px;
+    border-style: solid;
+    
+    padding: .375rem .725rem;
+    margin-top: 0.5ch;
+    appearance: none;  
+    line-height: 1.5rem;
+
+    font-size: 1rem;
+
+    outline: 2px solid transparent;
+
+    outline-offset: 2px;
+}
+
+.text-input:hover {
+    border-color: #fdfcfc4d;
+}
+.text-input:focus{
+    border-color: var(--gray-3);
+}
+
+.text-input-config-btn{
+    display: none;
+}
+
+.text-input-config-btn + label{
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.text-input-config-btn + label:hover,
+.text-input-config-btn[type="checkbox"]:checked + label {
+    background-color: var(--secondary);
+}
+.text-input-config-btn + label:hover i, 
+.text-input-config-btn[type="checkbox"]:checked + label i {
+    color: var(--dark-1);
+}
+
+input[type="color"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none ;
+    cursor: pointer;
+}
+
+.text-input-config-btn[type="checkbox"] + label + .text-input-controllers{ 
+    padding: 0 0.5rem;
+    max-height: 0;
+}
+
+.text-input-config-btn[type="checkbox"]:checked + label + .text-input-controllers{ 
+    padding: 2rem 0.5rem;
+    max-height: fit-content;
+}
+
+.text-input-controllers{
+    overflow: hidden;
+}
+
+.text-input-styles {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text-input-styles i {
+    font-size: 1.2rem;
+    margin: 0 0.5ch;
+    cursor: pointer;
+}

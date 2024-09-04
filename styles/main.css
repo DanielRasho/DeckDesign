@@ -1,3 +1,8 @@
+@import "./designView.css";
+@import "./mainButton.css";
+@import "./secondaryButton.css";
+@import "./textInput.css";
+
 :root {
   /* BASE COLORS */
   --white: #f0f0f0;
@@ -10,7 +15,7 @@
   --red-2: #c76870;
 
   --dark-1: #111111;
-  --dark-2: #181818;
+  --dark-2: #202020;
   --dark-3: #3a3a3a;
   --gray-1: #1a1a1a;
   --gray-2: #a3a3a4;

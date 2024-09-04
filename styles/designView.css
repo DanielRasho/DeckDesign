@@ -32,7 +32,7 @@
     margin-bottom: 1.5rem;
 }
 
-.design-view_controllers input[type="radio"] {
+.design-view_controllers ul li > input[type="radio"] {
     display: none;
 }
 
@@ -67,13 +67,13 @@
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 
-.design-view_controllers input[type="radio"]:checked + label + .section-content {
+.design-view_controllers ul li > input[type="radio"]:checked + label + .section-content {
     max-height: 70vh;
     padding: 1.5rem;
 }
 
 .design-view_controllers ul li > label:hover,
-.design-view_controllers input[type="radio"]:checked + label{
+.design-view_controllers ul li > input[type="radio"]:checked + label{
     background-color: var(--primary);
 }
 

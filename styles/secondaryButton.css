@@ -1,0 +1,28 @@
+.secondary-button{
+    border: none;   
+    outline: none;
+    background-color: #00000000;
+    color: var(--gray-2);
+    padding: 0.5rem 0.8rem;
+    display: inline-block;
+    cursor: pointer;
+    
+    font-size: 1.2rem;
+    font-family: "Outfit";
+    margin-top: 1rem;
+}
+.secondary-button > * {
+    color: var(--gray-2);
+}
+.secondary-button > i {
+    font-family: "Font Awesome 6 Free";
+    transition: transform 0.2s ease-in-out;
+}
+
+.secondary-button:hover {
+    color: var(--secondary);
+}
+
+.secondary-button:hover > i {
+    color: var(--secondary);
+}
