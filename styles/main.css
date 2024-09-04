@@ -1,5 +1,3 @@
-@import url('./tpography.css');
-
 :root {
   /* BASE COLORS */
   --white: #f0f0f0;
@@ -10,7 +8,9 @@
   --red-1: #c03540;
   --red-2: #c76870;
 
-  --dark-1: #000000;
+  --dark-1: #111111;
+  --dark-2: #181818;
+  --dark-3: #3a3a3a;
   --gray-1: #1a1a1a;
   --gray-2: #a3a3a4;
   --gray-3:#d1d1d1;

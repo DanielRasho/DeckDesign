@@ -1,0 +1,94 @@
+.retro-font{
+    font-family: "Sixtyfour";
+    font-size: 1.2rem;
+}
+
+.design-view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.design-view_controllers{
+    height: 100%;
+    width: 40%;
+    min-width: 400px;
+    overflow-y: scroll;
+    padding-top: 4rem;
+}
+
+.design-view_controllers ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.design-view_controllers ul li {
+    list-style: none;
+    width: 85%;
+    margin-bottom: 1.5rem;
+}
+
+.design-view_controllers input[type="radio"] {
+    display: none;
+}
+
+.design-view_controllers ul li > label {
+    width: 100%;
+    padding: 1.5rem;
+    display: inline-block;
+    background-color: var(--dark-3);
+    border-radius: 2rem;
+    border: 2px solid hsla(0,0%,100%,.05);
+    cursor: pointer;
+    
+    transition: background-color 200ms ease-in-out;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-header {
+    font-family: "Outfit";
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+.section-content {
+    background-color: var(--dark-2);
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+
+.design-view_controllers input[type="radio"]:checked + label + .section-content {
+    max-height: 70vh;
+    padding: 1.5rem;
+}
+
+.design-view_controllers ul li > label:hover,
+.design-view_controllers input[type="radio"]:checked + label{
+    background-color: var(--primary);
+}
+
+.design-view_preview{
+    height: 100%;
+    width: 60%;
+    position: relative;
+}
+
+.design-view_preview::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: 1px;
+    background-color: var(--dark-2);
+}
