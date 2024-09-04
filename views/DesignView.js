@@ -13,6 +13,9 @@ class DesignView extends HTMLElement {
         this.render()
         this.recreateTextInputs()
         this.addTextFieldListener()
+        window.addEventListener('modelChange', (event) => {
+            this.recreateTextInputs()
+        });
     }
 
     recreateTextInputs(){
@@ -27,10 +30,11 @@ class DesignView extends HTMLElement {
             textInput.setAttribute('text-box-id', index)
 
             // HERE PASS THE RENDER FUNCTION
-            textInput.parentRender = () => this.recreateTextInputs();
+            // textInput.parentRender = () => this.recreateTextInputs();
 
             sectionTexts.append(textInput)
         })
+
     }
 
     addTextFieldListener(){

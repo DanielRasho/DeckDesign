@@ -35,7 +35,7 @@ export class TextInput extends HTMLElement {
         const deleteBtn = this.querySelector(`#delete-btn-${id}`);
         deleteBtn.addEventListener('click', () => {
             MAIN_CARD.removeTextBox(id); // Remove the model
-            this.parentRender(); // Trigger the parent's render function
+            MAIN_CARD.notifyChange()
         });
     }
 

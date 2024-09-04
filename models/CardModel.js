@@ -29,4 +29,9 @@ export class CardModel {
     removeTextBox(index) {
         this.textBoxes.splice(index, 1)
     }
+
+    notifyChange() {
+        const event = new CustomEvent('modelChange', { detail: this });
+        window.dispatchEvent(event);
+    }
 }
