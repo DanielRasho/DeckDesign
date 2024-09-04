@@ -1,9 +1,10 @@
 export class FontStyles {
-    constructor ( family, weight, color, style ) {
+    constructor ( family, weight, color, style, size) {
         this.family = family
         this.weight = weight
         this.color = color
         this.style = style
+        this.size = size
     }
 }
 
@@ -11,7 +12,8 @@ export const DEFAULT_FONT_STYLES = new FontStyles(
     'Arial',
     'normal',
     '#000000',
-    'normal'
+    'normal',
+    '16'
 )
 
 export class TextBoxModel {
@@ -75,15 +77,17 @@ export class TextBoxModel {
             family: this.fontStyles.family,
             weight: this.fontStyles.weight,
             color: this.fontStyles.color,
-            style: this.fontStyles.style
+            style: this.fontStyles.style,
+            size: this.fontStyles.size
         };
     }
 
-    setFontStyles(family, weight, color, style) {
+    setFontStyles(family, weight, color, style, size) {
         this.fontStyles.family = family;
         this.fontStyles.weight = weight;
         this.fontStyles.color = color;
         this.fontStyles.style = style;
+        this.fontStyles.size = size
     }
 
     // Accessor methods for alignment

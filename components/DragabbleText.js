@@ -115,6 +115,7 @@ class DraggableText extends HTMLElement {
         const fontWeight = this.getAttribute('font-weight') || 'normal';
         const color = this.getAttribute('color') || '#000000';
         const fontStyle = this.getAttribute('font-style') || 'normal';
+        const fontSize = this.getAttribute('font-size') || '16';
         const textAlign = this.getAttribute('text-align') || 'center';
         const verticalAlign = this.getAttribute('vertical-align') || 'top';
         const text = this.getAttribute('text') || '';
@@ -124,6 +125,7 @@ class DraggableText extends HTMLElement {
         this.style.top = `${y}px`;
         this.style.width = `${width}px`;
         this.style.height = `${height}px`;
+        this.style.fontSize = `${fontSize}px`;
         this.style.zIndex = zindex;
         this.style.cursor = 'grab';
         this.style.boxSizing = 'border-box';

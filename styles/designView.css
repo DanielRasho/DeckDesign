@@ -118,6 +118,33 @@
     top: 3rem;
 }
 
+.size-picker{
+    display: block;
+    width: 35%;
+    
+    border-color: var(--gray-1);
+    background-color: var(--dark-1);
+    color: var(--white);
+    
+    border-radius: 0.75rem;
+    border-width: 1px;
+    border-style: solid;
+    
+    padding: .375rem .725rem;
+    appearance: none;
+    line-height: 1.5rem;
+
+    font-size: 1rem;
+
+    outline: 2px solid transparent;
+
+    outline-offset: 2px;
+
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media only screen and (max-width: 900px) {
     .design-view{
         flex-direction: column;

@@ -4,7 +4,7 @@ export class TextInput extends HTMLElement {
     constructor() {
         super();
         this.model = null;
-        this.notifyChange = MAIN_CARD.notifyChange
+        this.notifyChange = MAIN_CARD.notifyChange;
     }
 
     static get observedAttributes() {
@@ -13,10 +13,6 @@ export class TextInput extends HTMLElement {
 
     setModel(model) {
         this.model = model;
-        this.bold = model.getFontStyles().weight === 'bold';
-        this.italic = model.getFontStyles().style === 'italic';
-        this.color = model.getFontStyles().color;
-        //this.parentRender = () => {} // Parent function for render
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -27,8 +23,8 @@ export class TextInput extends HTMLElement {
 
     disconnectCallback(){
         const id = this.getAttribute('text-box-id');
-        const deleteBtn = document.getElementById('delete-btn-'+ id)
-        deleteBtn.removeEventListener('click', () => {}) // HERE IS THE LOGIC FOR DELETING
+        const deleteBtn = document.getElementById('delete-btn-' + id);
+        deleteBtn.removeEventListener('click', () => {}); // Logic for deleting
     }
 
     deleteItself() {
@@ -36,7 +32,7 @@ export class TextInput extends HTMLElement {
         const deleteBtn = this.querySelector(`#delete-btn-${id}`);
         deleteBtn.addEventListener('click', () => {
             MAIN_CARD.removeTextBox(id); // Remove the model
-            MAIN_CARD.notifyChange()
+            MAIN_CARD.notifyChange();
         });
     }
 
@@ -49,8 +45,7 @@ export class TextInput extends HTMLElement {
     render() {
         const id = this.getAttribute('text-box-id');
 
-        const deleteBtn = "delete-btn-" + id
-        
+        const deleteBtn = "delete-btn-" + id;
         const textBoxID = 'texbox-toogle' + id;
         const textBoxIDBold = 'texbox-toogle-bold' + id;
         const textBoxIDItalic = 'texbox-toogle-italic' + id;
@@ -59,7 +54,7 @@ export class TextInput extends HTMLElement {
         const textBoxHAlignLeft = 'texbox-toogle-h-left' + id;
         const textBoxHAlignCenter = 'texbox-toogle-h-center' + id;
         const textBoxHAlignRight = 'texbox-toogle-h-right' + id;
-        
+
         const textBoxVAlignName = 'texbox-toogle-v-align' + id;
         const textBoxVAlignTop = 'texbox-toogle-v-top' + id;
         const textBoxVAlignCenter = 'texbox-toogle-v-center' + id;
@@ -67,7 +62,7 @@ export class TextInput extends HTMLElement {
 
         this.innerHTML = /*html*/`
         <div>
-            <input id="${"text-input-"+id}" class="text-input" type='text' value="${this.model.getText()}">
+            <input id="${"text-input-" + id}" class="text-input" type='text' value="${this.model.getText()}">
             <input 
                 class="text-input-config-btn"
                 type="checkbox"
@@ -84,14 +79,14 @@ export class TextInput extends HTMLElement {
                         <input 
                             type="checkbox"
                             id="${textBoxIDBold}"
-                            ${this.bold ? 'checked' : ''}>
+                            ${this.model.getFontStyles().weight === 'bold' ? 'checked' : ''}>
                         <label for="${textBoxIDBold}">
                             <i class="fa-solid fa-bold"></i>
                         </label>
                         <input 
                             type="checkbox"
                             id="${textBoxIDItalic}"
-                            ${this.italic ? 'checked' : ''}>
+                            ${this.model.getFontStyles().style === 'italic' ? 'checked' : ''}>
                         <label for="${textBoxIDItalic}">
                             <i class="fa-solid fa-italic"></i>
                         </label>
@@ -149,7 +144,12 @@ export class TextInput extends HTMLElement {
                         </label>
                     </div>
                 </div>
-                <input type="color" value="${this.color}">
+                <input id="${"font-color-picker-" + id}" type="color" value="${this.model.getFontStyles().color}">
+                <input id="${"font-size-picker-" + id}" 
+                    class="size-picker" 
+                    type="number" 
+                    value="${this.model.getFontStyles().size}"
+                    min="6">
             </div>
         </div>
         `;
@@ -161,27 +161,29 @@ export class TextInput extends HTMLElement {
         // Bold checkbox
         const boldCheckbox = this.querySelector(`#texbox-toogle-bold${id}`);
         boldCheckbox.addEventListener('change', (event) => {
-            this.bold = event.target.checked;
+            const isBold = event.target.checked;
             this.model.setFontStyles(
                 this.model.getFontStyles().family,
-                this.bold ? 'bold' : 'normal',
+                isBold ? 'bold' : 'normal',
                 this.model.getFontStyles().color,
-                this.model.getFontStyles().style
+                this.model.getFontStyles().style,
+                this.model.getFontStyles().size
             );
-            this.notifyChange()
+            this.notifyChange();
         });
 
         // Italic checkbox
         const italicCheckbox = this.querySelector(`#texbox-toogle-italic${id}`);
         italicCheckbox.addEventListener('change', (event) => {
-            this.italic = event.target.checked;
+            const isItalic = event.target.checked;
             this.model.setFontStyles(
                 this.model.getFontStyles().family,
                 this.model.getFontStyles().weight,
                 this.model.getFontStyles().color,
-                this.italic ? 'italic' : 'normal'
+                isItalic ? 'italic' : 'normal',
+                this.model.getFontStyles().size
             );
-            this.notifyChange()
+            this.notifyChange();
         });
 
         // Horizontal Alignment radio buttons
@@ -192,21 +194,21 @@ export class TextInput extends HTMLElement {
         hAlignLeftRadio.addEventListener('change', () => {
             if (hAlignLeftRadio.checked) {
                 this.model.setHorizontalAlign('left');
-                this.notifyChange()
+                this.notifyChange();
             }
         });
 
         hAlignCenterRadio.addEventListener('change', () => {
             if (hAlignCenterRadio.checked) {
                 this.model.setHorizontalAlign('center');
-                this.notifyChange()
+                this.notifyChange();
             }
         });
 
         hAlignRightRadio.addEventListener('change', () => {
             if (hAlignRightRadio.checked) {
                 this.model.setHorizontalAlign('right');
-                this.notifyChange()
+                this.notifyChange();
             }
         });
 
@@ -218,45 +220,60 @@ export class TextInput extends HTMLElement {
         vAlignTopRadio.addEventListener('change', () => {
             if (vAlignTopRadio.checked) {
                 this.model.setVerticalAlign('top');
-                this.notifyChange()
+                this.notifyChange();
             }
         });
 
         vAlignCenterRadio.addEventListener('change', () => {
             if (vAlignCenterRadio.checked) {
                 this.model.setVerticalAlign('center');
-                this.notifyChange()
+                this.notifyChange();
             }
         });
 
         vAlignBottomRadio.addEventListener('change', () => {
             if (vAlignBottomRadio.checked) {
                 this.model.setVerticalAlign('end');
-                this.notifyChange()
+                this.notifyChange();
             }
         });
 
         // Color picker
-        const colorPicker = this.querySelector('input[type="color"]');
+        const colorPicker = document.getElementById("font-color-picker-" + id);
         colorPicker.addEventListener('input', (event) => {
-            this.color = event.target.value;
+            const color = event.target.value;
             this.model.setFontStyles(
                 this.model.getFontStyles().family,
                 this.model.getFontStyles().weight,
-                this.color,
-                this.model.getFontStyles().style
+                color,
+                this.model.getFontStyles().style,
+                this.model.getFontStyles().size
             );
-            this.notifyChange()
+            this.notifyChange();
         });
 
-        // Text input
-        const textInput = this.querySelector('#text-input-' + id);
-        textInput.addEventListener('focusout', (event) => {
-            this.model.setText(event.target.value);
-            this.notifyChange()
+        // Font size picker
+        const sizePicker = document.getElementById("font-size-picker-" + id);
+        sizePicker.addEventListener('focusout', (event) => {
+            const size = parseInt(event.target.value);
+            this.model.setFontStyles(
+                this.model.getFontStyles().family,
+                this.model.getFontStyles().weight,
+                this.model.getFontStyles().color,
+                this.model.getFontStyles().style,
+                size
+            );
+            this.notifyChange();
+        });
+
+        // Input field
+        const inputField = document.getElementById("text-input-" + id);
+        inputField.addEventListener('focusout', (event) => {
+            const text = event.target.value;
+            this.model.setText(text);
+            this.notifyChange();
         });
     }
 }
 
-// Define the custom element
 customElements.define('text-input', TextInput);

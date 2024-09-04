@@ -39,15 +39,16 @@ class DesignView extends HTMLElement {
 
             sectionTexts.append(textInput)
         })
+        console.log(textBoxes)
 
     }
 
     recreateImageInputs(){
-        let textBoxes = MAIN_CARD.images
+        let imageBoxes = MAIN_CARD.images
         const sectionTexts = document.getElementById('section-images-list')
         sectionTexts.innerHTML = '' // Clear data
         
-        textBoxes.forEach((imageBoxModel, index) => {
+        imageBoxes.forEach((imageBoxModel, index) => {
             const imageInput = document.createElement('image-input')
             
             imageInput.setModel(imageBoxModel)

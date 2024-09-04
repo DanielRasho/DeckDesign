@@ -37,6 +37,7 @@ class CardEditor extends HTMLElement {
             textBox.setAttribute('font-weight', model.getFontStyles().weight);
             textBox.setAttribute('color', model.getFontStyles().color);
             textBox.setAttribute('font-style', model.getFontStyles().style);
+            textBox.setAttribute('font-size', model.getFontStyles().size);
             textBox.setAttribute('text-align', model.getHorizontalAlign());
             textBox.setAttribute('vertical-align', model.getVerticalAlign());
             textBox.setAttribute('text', model.getText());
