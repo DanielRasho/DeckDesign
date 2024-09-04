@@ -10,7 +10,7 @@
 :root {
   /* BASE COLORS */
   --white: #f0f0f0;
-  --black: #000;
+  --black: #121213;
   --yellow-1: #eeba4a;
   --orange: #e98e39;
   --yellow-2: #ffe591;
@@ -18,7 +18,7 @@
   --red-1: #c03540;
   --red-2: #c76870;
 
-  --dark-1: #111111;
+  --dark-1: #1a1a1b;
   --dark-2: #202020;
   --dark-3: #3a3a3a;
   --gray-1: #1a1a1a;

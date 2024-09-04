@@ -39,7 +39,6 @@ class DesignView extends HTMLElement {
 
             sectionTexts.append(textInput)
         })
-        console.log(textBoxes)
 
     }
 
@@ -186,8 +185,8 @@ class DesignView extends HTMLElement {
                 </card-editor>
                 <div> 
                     <main-button 
-                        text="Export" after-icon="fa-solid fa-arrow-right" 
-                        button-id="export-btn">
+                        text="Source Code" after-icon="fa-brands fa-github" 
+                        button-id="source-code-btn">
                 </div>
             </div>
         </div>
@@ -242,6 +241,11 @@ class DesignView extends HTMLElement {
                 reader.readAsDataURL(file);
             }
         });
+
+        const importantButton = document.getElementById('source-code-btn')
+        importantButton.addEventListener('click', () => {
+            window.open(url, '_blank');
+        })
     }
 }
 customElements.define('design-view', DesignView);
