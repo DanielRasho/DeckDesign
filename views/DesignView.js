@@ -13,6 +13,7 @@ class DesignView extends HTMLElement {
         this.render()
         this.recreateTextInputs()
         this.addTextFieldListener()
+        this.addEventListeners()
         window.addEventListener('modelChange', (event) => {
             this.recreateTextInputs()
         });
@@ -160,6 +161,7 @@ class DesignView extends HTMLElement {
             if (colorRadio.checked) {
                 MAIN_CARD.cardBackground.type = 'SOLID';
                 MAIN_CARD.cardBackground.value = colorPicker.value; // Set to current color picker value
+                MAIN_CARD.notifyChange()
             }
         });
 
@@ -168,6 +170,7 @@ class DesignView extends HTMLElement {
             if (imageRadio.checked) {
                 MAIN_CARD.cardBackground.type = 'IMAGE';
                 MAIN_CARD.cardBackground.value = ''; // Clear value since no image is selected yet
+                MAIN_CARD.notifyChange()
             }
         });
 
@@ -175,6 +178,7 @@ class DesignView extends HTMLElement {
         colorPicker.addEventListener('input', function () {
             if (colorRadio.checked) {
                 MAIN_CARD.cardBackground.value = colorPicker.value;
+                MAIN_CARD.notifyChange()
             }
         });
 
@@ -186,6 +190,7 @@ class DesignView extends HTMLElement {
                 
                 reader.onload = function (e) {
                     MAIN_CARD.cardBackground.value = e.target.result; // Set base64 encoded image data
+                    MAIN_CARD.notifyChange()
                 };
 
                 reader.readAsDataURL(file);

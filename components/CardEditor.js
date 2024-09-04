@@ -1,3 +1,4 @@
+import { CARD_BACKGROUND_TYPES } from "../models/CardModel.js";
 import { MAIN_CARD } from "../stores/CardStore.js";
 
 class CardEditor extends HTMLElement {
@@ -42,6 +43,22 @@ class CardEditor extends HTMLElement {
 
             this.appendChild(textBox);
         });
+
+        this.setBackground()
+    }
+
+    setBackground(){
+        this.style.backgroundColor = 'transparent';
+        this.style.backgroundImage = 'none';
+
+        switch (this._models.cardBackground.type) {
+            case CARD_BACKGROUND_TYPES.SOLID:
+                this.style.backgroundColor = this._models.cardBackground.value;
+                break;
+            case CARD_BACKGROUND_TYPES.IMAGE:
+                this.style.backgroundImage = `url(${this._models.cardBackground.value})`;
+                break;
+        }
     }
 }
 

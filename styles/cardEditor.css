@@ -5,4 +5,10 @@
     width: 75%;
     border-radius: 0.3rem;
     max-width: 900px;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    outline: 1px solid var(--white);
 }
