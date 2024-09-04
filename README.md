@@ -7,3 +7,5 @@
 </div>
 
 🔴 [**>> ENJOY THE APP HERE <<**](https://danielrasho.github.io/DeckDesign/)
+
+![Demo](./assets/demo.gif)
