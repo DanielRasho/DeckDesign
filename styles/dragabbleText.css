@@ -1,5 +1,9 @@
-.dragabble-text:hover{
+.dragabble-text {
+    display: flex;
+    flex-direction: column;
+}
 
+.dragabble-text:hover{
     outline: 1px solid rgb(93, 209, 255);
 }
 .dragabble-text > div{
@@ -9,4 +13,11 @@
        -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.resizer {
+    display: none;
+}
+.dragabble-text:hover .resizer{
+    display: block;
 }

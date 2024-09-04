@@ -4,10 +4,13 @@ class DraggableText extends HTMLElement {
     constructor() {
         super();
         this.isDragging = false;
+        this.isResizing = false;
         this.startX = 0;
         this.startY = 0;
         this.initialLeft = 0;
         this.initialTop = 0;
+        this.initialWidth = 0;
+        this.initialHeight = 0;
     }
 
     static get observedAttributes() {
@@ -31,17 +34,27 @@ class DraggableText extends HTMLElement {
 
     addEventListeners() {
         this.addEventListener('mousedown', (e) => {
-            this.isDragging = true;
-            this.startX = e.clientX;
-            this.startY = e.clientY;
-            this.initialLeft = parseInt(this.style.left, 10) || 0;
-            this.initialTop = parseInt(this.style.top, 10) || 0;
-            document.addEventListener('mousemove', this.onMouseMove);
-            document.addEventListener('mouseup', this.onMouseUp);
+            if (e.target.classList.contains('resizer')) {
+                this.isResizing = true;
+                this.startX = e.clientX;
+                this.startY = e.clientY;
+                this.initialWidth = parseInt(this.style.width, 10) || 100;
+                this.initialHeight = parseInt(this.style.height, 10) || 100;
+                document.addEventListener('mousemove', this.onResize);
+                document.addEventListener('mouseup', this.onResizeEnd);
+            } else {
+                this.isDragging = true;
+                this.startX = e.clientX;
+                this.startY = e.clientY;
+                this.initialLeft = parseInt(this.style.left, 10) || 0;
+                this.initialTop = parseInt(this.style.top, 10) || 0;
+                document.addEventListener('mousemove', this.onDrag);
+                document.addEventListener('mouseup', this.onDragEnd);
+            }
         });
     }
 
-    onMouseMove = (e) => {
+    onDrag = (e) => {
         if (!this.isDragging) return;
 
         const container = this.parentElement;
@@ -64,13 +77,32 @@ class DraggableText extends HTMLElement {
         this.style.top = `${newTop}px`;
         
         const id = this.getAttribute('dragabble-text-id') || 0;
-        MAIN_CARD.textBoxes[id].setPosition(newLeft, newTop)
+        MAIN_CARD.textBoxes[id].setPosition(newLeft, newTop);
     }
 
-    onMouseUp = () => {
+    onResize = (e) => {
+        if (!this.isResizing) return;
+
+        const newWidth = this.initialWidth + (e.clientX - this.startX);
+        const newHeight = this.initialHeight + (e.clientY - this.startY);
+
+        this.style.width = `${Math.max(newWidth, 30)}px`; // Minimum width
+        this.style.height = `${Math.max(newHeight, 30)}px`; // Minimum height
+        
+        const id = this.getAttribute('dragabble-text-id') || 0;
+        MAIN_CARD.textBoxes[id].setSize(newWidth, newHeight);
+    }
+
+    onDragEnd = () => {
         this.isDragging = false;
-        document.removeEventListener('mousemove', this.onMouseMove);
-        document.removeEventListener('mouseup', this.onMouseUp);
+        document.removeEventListener('mousemove', this.onDrag);
+        document.removeEventListener('mouseup', this.onDragEnd);
+    }
+
+    onResizeEnd = () => {
+        this.isResizing = false;
+        document.removeEventListener('mousemove', this.onResize);
+        document.removeEventListener('mouseup', this.onResizeEnd);
     }
 
     render() {
@@ -94,13 +126,11 @@ class DraggableText extends HTMLElement {
         this.style.height = `${height}px`;
         this.style.zIndex = zindex;
         this.style.cursor = 'grab';
-
-        // Prevent inline styling issues in certain browsers
         this.style.boxSizing = 'border-box';
+        this.style['justify-content'] = verticalAlign;
 
         const textBox = document.createElement('div');
         textBox.style.width = '100%';
-        textBox.style.height = '100%';
         textBox.style.display = 'flex';
         textBox.style.alignItems = verticalAlign;
         textBox.style.justifyContent = textAlign;
@@ -110,10 +140,21 @@ class DraggableText extends HTMLElement {
         textBox.style.color = color;
         textBox.style.fontStyle = fontStyle;
         textBox.style.textAlign = textAlign;
-        textBox.style.verticalAlign = verticalAlign;
+
+        // Add resizer handles
+        const resizer = document.createElement('div');
+        resizer.className = 'resizer';
+        resizer.style.position = 'absolute';
+        resizer.style.width = '10px';
+        resizer.style.height = '10px';
+        resizer.style.backgroundColor = '#000';
+        resizer.style.right = '0';
+        resizer.style.bottom = '0';
+        resizer.style.cursor = 'nwse-resize';
 
         this.innerHTML = ''; // Clear existing content
         this.appendChild(textBox);
+        this.appendChild(resizer);
     }
 }
 

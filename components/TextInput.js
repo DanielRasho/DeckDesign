@@ -135,7 +135,7 @@ export class TextInput extends HTMLElement {
                             type="radio"
                             id=${textBoxVAlignCenter}
                             name=${textBoxVAlignName}
-                            ${this.model.getVerticalAlign() === 'middle' ? 'checked' : ''}>
+                            ${this.model.getVerticalAlign() === 'center' ? 'checked' : ''}>
                         <label for="${textBoxVAlignCenter}">
                             <i class="fa-solid fa-left-right"></i>
                         </label>
@@ -143,7 +143,7 @@ export class TextInput extends HTMLElement {
                             type="radio"
                             id=${textBoxVAlignBottom}
                             name=${textBoxVAlignName}
-                            ${this.model.getVerticalAlign() === 'bottom' ? 'checked' : ''}>
+                            ${this.model.getVerticalAlign() === 'end' ? 'checked' : ''}>
                         <label for="${textBoxVAlignBottom}">
                             <i class="fa-solid fa-down-long"></i>
                         </label>
@@ -224,14 +224,14 @@ export class TextInput extends HTMLElement {
 
         vAlignCenterRadio.addEventListener('change', () => {
             if (vAlignCenterRadio.checked) {
-                this.model.setVerticalAlign('middle');
+                this.model.setVerticalAlign('center');
                 this.notifyChange()
             }
         });
 
         vAlignBottomRadio.addEventListener('change', () => {
             if (vAlignBottomRadio.checked) {
-                this.model.setVerticalAlign('bottom');
+                this.model.setVerticalAlign('end');
                 this.notifyChange()
             }
         });
