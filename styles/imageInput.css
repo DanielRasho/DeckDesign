@@ -5,6 +5,7 @@
     display: inline-block;
     width: 80%;
     min-width: 100px;
+    min-height: 2rem;
     
     border-color: var(--gray-1);
     background-color: var(--dark-1);
