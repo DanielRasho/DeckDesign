@@ -23,8 +23,10 @@ class CardEditor extends HTMLElement {
 
         this.innerHTML = '';
 
-        this._models.textBoxes.forEach(model => {
+        this._models.textBoxes.forEach((model, index) => {
             const textBox = document.createElement('dragabble-text');
+            textBox.classList.add("dragabble-text")
+            textBox.setAttribute('dragabble-text-id', index);
             textBox.setAttribute('x', model.getPosition().x);
             textBox.setAttribute('y', model.getPosition().y);
             textBox.setAttribute('width', model.getSize().width);
