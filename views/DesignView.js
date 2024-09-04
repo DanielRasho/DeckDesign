@@ -66,7 +66,35 @@ class DesignView extends HTMLElement {
                             <span class="retro-font">01</span>
                         </label>
                         <div class="section-content">
-                            content
+                            <input
+                                type="radio"
+                                name="general-background"
+                                id="general-background-color"
+                                ${MAIN_CARD.cardBackground.type === 'SOLID' ? 'checked' : ''}
+                            >
+                            <label for="general-background-color">
+                                Color
+                            </label>
+                            <input
+                                type="radio"
+                                name="general-background"
+                                id="general-background-image"
+                                ${MAIN_CARD.cardBackground.type === 'IMAGE' ? 'checked' : ''}
+                            >
+                            <label for="general-background-image"> 
+                                Image
+                            </label>
+                            <input 
+                                id="general-background-color-picker" 
+                                type="color"
+                                value="${MAIN_CARD.cardBackground.value}"
+                            >
+                            <input 
+                                id="general-background-file-picker" 
+                                type="file" 
+                                accept="image/png, image/jpeg, image/webp"
+                                value="${MAIN_CARD.cardBackground.value}"
+                            >
                         </div>
                     </li>
                     <li>
@@ -114,6 +142,51 @@ class DesignView extends HTMLElement {
         </div>
         `;
         
+    }
+
+    addEventListeners() {
+        // Assuming MAIN_CARD is already defined somewhere in your script.
+        const colorRadio = document.getElementById('general-background-color');
+        const imageRadio = document.getElementById('general-background-image');
+        const colorPicker = document.getElementById('general-background-color-picker');
+        const filePicker = document.getElementById('general-background-file-picker');
+
+        // Event listener for changing the background type to color
+        colorRadio.addEventListener('change', function () {
+            if (colorRadio.checked) {
+                MAIN_CARD.cardBackground.type = 'SOLID';
+                MAIN_CARD.cardBackground.value = colorPicker.value; // Set to current color picker value
+            }
+        });
+
+        // Event listener for changing the background type to image
+        imageRadio.addEventListener('change', function () {
+            if (imageRadio.checked) {
+                MAIN_CARD.cardBackground.type = 'IMAGE';
+                MAIN_CARD.cardBackground.value = ''; // Clear value since no image is selected yet
+            }
+        });
+
+        // Event listener for color picker changes
+        colorPicker.addEventListener('input', function () {
+            if (colorRadio.checked) {
+                MAIN_CARD.cardBackground.value = colorPicker.value;
+            }
+        });
+
+        // Event listener for file picker changes
+        filePicker.addEventListener('change', function () {
+            if (imageRadio.checked && filePicker.files.length > 0) {
+                const file = filePicker.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function (e) {
+                    MAIN_CARD.cardBackground.value = e.target.result; // Set base64 encoded image data
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
     }
 }
 customElements.define('design-view', DesignView);

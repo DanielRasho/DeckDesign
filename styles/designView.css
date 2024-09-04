@@ -77,6 +77,21 @@
     background-color: var(--primary);
 }
 
+#general-background-color-picker, 
+#general-background-file-picker {
+    display: none;
+    margin-top: 1rem;
+}
+
+#general-background-color[type="radio"]:checked ~ #general-background-color-picker{
+    display: block;
+}
+
+#general-background-image[type="radio"]:checked ~ #general-background-file-picker{
+    display: block;
+}
+
+
 .design-view_preview{
     height: 100%;
     width: 60%;
